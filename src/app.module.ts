@@ -6,6 +6,7 @@ import { UserService } from './users/users.service';
 import { PostsService } from './posts/posts.service';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
+import { join } from 'path';
 
 @Module({
   imports: [
@@ -13,6 +14,8 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
       driver: ApolloDriver,
       debug: false,
       playground: false,
+      autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
+      sortSchema: true,
     }),
   ],
   controllers: [AppController],
